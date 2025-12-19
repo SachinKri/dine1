@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from config.logging import LOGGING 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5o)9srp445gxi-q285oxb9q*)i#4ao!kax_cve-0+4*3_)n_72'
+# SECRET_KEY = 'django-insecure-5o)9srp445gxi-q285oxb9q*)i#4ao!kax_cve-0+4*3_)n_72'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -41,13 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
 
-    "apps.users",
-    "apps.restaurants",
-    "apps.orders",
-    "apps.delivery",
-    "apps.payments",
-    "apps.notifications",
-    "apps.reviews",
+    "apps.users.apps.UsersConfig",
+    "apps.restaurants.apps.RestaurantsConfig",
+    "apps.orders.apps.OrdersConfig",
+    "apps.delivery.apps.DeliveryConfig",
+    "apps.payments.apps.PaymentsConfig",
+    "apps.notifications.apps.NotificationsConfig",
+    "apps.reviews.apps.ReviewsConfig",
 ]
 
 MIDDLEWARE = [
@@ -61,6 +67,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+AUTH_USER_MODEL = "users.User"
 
 TEMPLATES = [
     {
@@ -83,10 +91,21 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.getenv("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
 
@@ -115,12 +134,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
 USE_TZ = True
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+DATABASE_ROUTERS = []  # Ready for DB-per-service later
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
