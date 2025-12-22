@@ -7,6 +7,8 @@ from apps.users.views.logout import LogoutView
 from apps.users.views.admin_dashboard import AdminDashboardView
 from apps.users.views.oauth_github import GitHubOAuthLoginView
 from apps.users.views.oauth_github_callback import GitHubOAuthCallbackView
+from apps.users.views.oauth_google import GoogleOAuthLoginView
+from apps.users.views.oauth_google_callback import GoogleOAuthCallbackView
 
 urlpatterns = [
     path("register/", UserRegistrationView.as_view(), name="user-register"),
@@ -22,6 +24,12 @@ urlpatterns = [
         "oauth/github/callback/",
         GitHubOAuthCallbackView.as_view(),
         name="github-oauth-callback",
+    ),
+    path("oauth/google/", GoogleOAuthLoginView.as_view(), name="google-oauth"),
+    path(
+        "oauth/google/callback/",
+        GoogleOAuthCallbackView.as_view(),
+        name="google-oauth-callback",
     ),
     
 ]
