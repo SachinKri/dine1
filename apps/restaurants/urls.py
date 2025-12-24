@@ -31,8 +31,10 @@ urlpatterns = [
 
 from django.urls import path
 from .views.restaurants import *
+from .views.search_restaurants import RestaurantSearchView
 from .views.menu_categories import *
 from .views.menu_items import *
+from .views.search_items import FoodItemSearchView
 
 urlpatterns = [
 
@@ -42,6 +44,7 @@ urlpatterns = [
     path("<uuid:id>/", RestaurantDetailView.as_view()),
     path("<uuid:id>/update/", RestaurantUpdateView.as_view()),
     path("<uuid:id>/delete/", RestaurantDeleteView.as_view()),
+    path("search/", RestaurantSearchView.as_view()),
 
     # Menu Categories
     path("menu/categories/", MenuCategoryListView.as_view()),
@@ -54,4 +57,5 @@ urlpatterns = [
     path("menu/item/create/", MenuItemCreateView.as_view()),
     path("menu/item/<uuid:id>/update/", MenuItemUpdateView.as_view()),
     path("menu/item/<uuid:id>/delete/", MenuItemDeleteView.as_view()),
+    path("search/items/", FoodItemSearchView.as_view()),
 ]
