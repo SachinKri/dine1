@@ -36,6 +36,7 @@ from .views.menu_categories import *
 from .views.menu_items import *
 from .views.search_items import FoodItemSearchView
 from .views.filter_by_category import MenuItemsByCategoryView
+from .views.sorted_items import SortedMenuItemsView
 
 urlpatterns = [
 
@@ -66,4 +67,9 @@ urlpatterns = [
         name="menu-items-by-category",
     ),
 
+    path(
+        "browse/categories/<uuid:category_id>/items/sorted/",
+        SortedMenuItemsView.as_view(),
+        name="sorted-menu-items",
+    ),
 ]
