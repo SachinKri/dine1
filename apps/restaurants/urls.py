@@ -35,6 +35,7 @@ from .views.search_restaurants import RestaurantSearchView
 from .views.menu_categories import *
 from .views.menu_items import *
 from .views.search_items import FoodItemSearchView
+from .views.filter_by_category import MenuItemsByCategoryView
 
 urlpatterns = [
 
@@ -58,4 +59,11 @@ urlpatterns = [
     path("menu/item/<uuid:id>/update/", MenuItemUpdateView.as_view()),
     path("menu/item/<uuid:id>/delete/", MenuItemDeleteView.as_view()),
     path("search/items/", FoodItemSearchView.as_view()),
+
+    path(
+        "browse/categories/<uuid:category_id>/items/",
+        MenuItemsByCategoryView.as_view(),
+        name="menu-items-by-category",
+    ),
+
 ]
