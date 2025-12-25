@@ -37,6 +37,9 @@ from .views.menu_items import *
 from .views.search_items import FoodItemSearchView
 from .views.filter_by_category import MenuItemsByCategoryView
 from .views.sorted_items import SortedMenuItemsView
+from apps.restaurants.views.admin.bulk_upload import (
+    BulkMenuItemUploadView
+)
 
 urlpatterns = [
 
@@ -71,5 +74,11 @@ urlpatterns = [
         "browse/categories/<uuid:category_id>/items/sorted/",
         SortedMenuItemsView.as_view(),
         name="sorted-menu-items",
+    ),
+
+    path(
+        "menu/items/bulk-upload/",
+        BulkMenuItemUploadView.as_view(),
+        name="bulk-menu-upload",
     ),
 ]
