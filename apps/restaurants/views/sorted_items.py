@@ -3,15 +3,6 @@ from apps.restaurants.models import MenuItem
 from apps.restaurants.serializers.menu import MenuItemSerializer
 from apps.restaurants.pagination import FoodItemPagination
 
-class MenuItemListView(ListAPIView):
-    serializer_class = MenuItemSerializer
-
-    def get_queryset(self):
-        return MenuItem.objects.filter(
-            category_id=self.request.query_params.get("category_id"),
-            is_available=True
-        )
-
 class SortedMenuItemsView(ListAPIView):
     """
     Customer-facing API to:
