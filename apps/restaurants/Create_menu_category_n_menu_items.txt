@@ -1,0 +1,99 @@
+Sample JSON — Menu Category & Menu Items
+A. Create Menu Category
+Endpoint
+POST /api/v1/restaurants/menu/category/add/
+
+Headers
+Authorization: Bearer <restaurant_admin_access_token>
+Content-Type: application/json
+
+Sample Menu Categories (5)
+1️⃣ Starters
+{
+  "restaurant_id": "22ffd46290f54f9780c8d8d1f246111d",
+  "name": "Starters",
+  "is_active": true
+}
+
+2️⃣ Main Course
+{
+  "restaurant_id": "8a2f3d7c-1b9a-4a8e-b8c1-123456789abc",
+  "name": "Main Course",
+  "is_active": true
+}
+
+3️⃣ Breads
+{
+  "restaurant_id": "8a2f3d7c-1b9a-4a8e-b8c1-123456789abc",
+  "name": "Breads",
+  "is_active": true
+}
+
+4️⃣ Beverages
+{
+  "restaurant_id": "8a2f3d7c-1b9a-4a8e-b8c1-123456789abc",
+  "name": "Beverages",
+  "is_active": true
+}
+
+5️⃣ Desserts
+{
+  "restaurant_id": "8a2f3d7c-1b9a-4a8e-b8c1-123456789abc",
+  "name": "Desserts",
+  "is_active": true
+}
+
+
+B. Create Menu Item
+Endpoint
+POST /api/v1/restaurants/menu/item/add/
+
+Headers
+Authorization: Bearer <restaurant_admin_access_token>
+Content-Type: application/json
+
+Sample Menu Items (5)
+1️⃣ Paneer Tikka (Starters)
+{
+  "category_id": "627d0f9e82a54f99b116a638028037d5",
+  "name": "Paneer Tikka",
+  "description": "Cottage cheese cubes marinated with spices and grilled.",
+  "price": 249.00,
+  "is_available": true
+}
+
+2️⃣ Veg Spring Rolls (Starters)
+{
+  "category_id": "627d0f9e82a54f99b116a638028037d5",
+  "name": "Veg Spring Rolls",
+  "description": "Crispy rolls stuffed with mixed vegetables.",
+  "price": 199.00,
+  "is_available": true
+}
+
+3️⃣ Butter Naan (Breads)
+{
+  "category_id": "0ba7dabfeb7a40b0aa374d930e2d918b",
+  "name": "Butter Naan",
+  "description": "Soft naan bread topped with butter.",
+  "price": 45.00,
+  "is_available": true
+}
+
+4️⃣ Dal Makhani (Main Course)
+{
+  "category_id": "aaa57b005f164e7ead0c593162680846",
+  "name": "Dal Makhani",
+  "description": "Slow-cooked black lentils in rich creamy gravy.",
+  "price": 299.00,
+  "is_available": true
+}
+
+5️⃣ Cold Coffee (Beverages)
+{
+  "category_id": "91f7a1f21cfb4965ab5711f14834771b",
+  "name": "Cold Coffee",
+  "description": "Chilled coffee blended with milk and ice.",
+  "price": 149.00,
+  "is_available": true
+}

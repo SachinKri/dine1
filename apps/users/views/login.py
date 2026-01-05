@@ -1,3 +1,4 @@
+'''
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -27,3 +28,16 @@ class UserLoginView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
+'''
+
+from rest_framework_simplejwt.views import TokenObtainPairView
+from apps.users.serializers.token_serializers import (
+    CustomTokenObtainPairSerializer
+)
+
+
+class UserLoginView(TokenObtainPairView):
+    """
+    User Login API (JWT with custom claims)
+    """
+    serializer_class = CustomTokenObtainPairSerializer

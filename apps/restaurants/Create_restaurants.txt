@@ -1,0 +1,52 @@
+Sample JSON Payloads — Create Restaurant API
+Endpoint
+POST /api/v1/restaurants/create/
+
+Headers
+Authorization: Bearer <restaurant_admin_access_token>
+Content-Type: application/json
+
+1️⃣ North Indian Restaurant
+{
+  "name": "Punjabi Tadka",
+  "description": "Authentic North Indian cuisine with rich gravies and tandoor specials.",
+  "address": "Sector 18, Noida, Uttar Pradesh",
+  "is_open": true,
+  "is_active": true
+}
+
+2️⃣ South Indian Restaurant
+{
+  "name": "Dakshin Delights",
+  "description": "Traditional South Indian meals, dosas, and filter coffee.",
+  "address": "Indiranagar, Bengaluru, Karnataka",
+  "is_open": true,
+  "is_active": true
+}
+
+3️⃣ Fast Food & Snacks Outlet
+{
+  "name": "Burger Junction",
+  "description": "Burgers, fries, and quick bites for all age groups.",
+  "address": "MG Road, Pune, Maharashtra",
+  "is_open": true,
+  "is_active": true
+}
+
+4️⃣ Chinese & Asian Cuisine
+{
+  "name": "Dragon Bowl",
+  "description": "Chinese and Pan-Asian dishes with authentic flavors.",
+  "address": "Park Street, Kolkata, West Bengal",
+  "is_open": false,
+  "is_active": true
+}
+
+5️⃣ Café & Desserts
+{
+  "name": "Brew & Bliss Café",
+  "description": "Artisan coffee, desserts, and relaxed café vibes.",
+  "address": "Bandra West, Mumbai, Maharashtra",
+  "is_open": true,
+  "is_active": true
+}

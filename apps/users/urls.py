@@ -14,7 +14,8 @@ from apps.users.views.oauth_google_callback import GoogleOAuthCallbackView
 urlpatterns = [
     path("register/", UserRegistrationView.as_view(), name="user-register"),
     path("search/", UserSearchView.as_view(), name="user-search"),
-    path("login/", UserLoginView.as_view(), name="user-login"),
+    # path("login/", UserLoginView.as_view(), name="user-login"),
+    path("auth/login/", UserLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(), name="user-logout"),
     path("profile/", UserProfileView.as_view(), name="user-profile"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token-refresh"),

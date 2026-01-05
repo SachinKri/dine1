@@ -40,6 +40,9 @@ from .views.sorted_items import SortedMenuItemsView
 from apps.restaurants.views.admin.bulk_upload import (
     BulkMenuItemUploadView
 )
+from apps.restaurants.views.internal_menu_views import (
+    InternalMenuValidationView
+)
 
 urlpatterns = [
 
@@ -80,5 +83,10 @@ urlpatterns = [
         "menu/items/bulk-upload/",
         BulkMenuItemUploadView.as_view(),
         name="bulk-menu-upload",
+    ),
+    path(
+        "internal/menu/validate/",
+        InternalMenuValidationView.as_view(),
+        name="internal-menu-validate",
     ),
 ]

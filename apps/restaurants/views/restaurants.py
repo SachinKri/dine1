@@ -53,7 +53,8 @@ class RestaurantDeleteView(generics.DestroyAPIView):
         """
         Ensure only the owner (restaurant admin) can delete the restaurant
         """
-        if int(instance.owner_id) != self.request.user.id:
+        # if int(instance.owner_id) != self.request.user.id:
+        if instance.owner_id != self.request.user.id:
             raise PermissionDenied(
                 "You are not authorized to delete this restaurant."
             )

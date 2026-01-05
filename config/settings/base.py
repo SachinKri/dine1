@@ -100,6 +100,8 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=int(os.getenv("REFRESH_TOKEN_LIFETIME"))),
     "AUTH_HEADER_TYPES": ("Bearer",),
     "BLACKLIST_AFTER_ROTATION": True,
+    "SIGNING_KEY": os.getenv("DINESTREAM_JWT_SECRET"),
+    "ALGORITHM": "HS256",
 }
 
 
