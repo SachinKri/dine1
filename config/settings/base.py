@@ -166,3 +166,16 @@ DATABASE_ROUTERS = []  # Ready for DB-per-service later
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# ==============================
+# Redis Configuration
+# ==============================
+
+import os
+
+REDIS_HOST = os.getenv("REDIS_HOST", "127.0.0.1")
+REDIS_PORT = int(os.getenv("REDIS_PORT", 6379))
+REDIS_DB = int(os.getenv("REDIS_DB", 0))
+
+REDIS_SOCKET_TIMEOUT = float(os.getenv("REDIS_SOCKET_TIMEOUT", 2.0))
+REDIS_RETRY_ON_TIMEOUT = True

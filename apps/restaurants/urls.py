@@ -43,6 +43,9 @@ from apps.restaurants.views.admin.bulk_upload import (
 from apps.restaurants.views.internal_menu_views import (
     InternalMenuValidationView
 )
+from apps.restaurants.views.internal_restaurant_validate import (
+    InternalRestaurantValidateView
+)
 
 urlpatterns = [
 
@@ -88,5 +91,10 @@ urlpatterns = [
         "internal/menu/validate/",
         InternalMenuValidationView.as_view(),
         name="internal-menu-validate",
+    ),
+    path(
+        "internal/restaurant/validate/<uuid:restaurant_id>/",
+        InternalRestaurantValidateView.as_view(),
+        name="internal-restaurant-validate",
     ),
 ]
