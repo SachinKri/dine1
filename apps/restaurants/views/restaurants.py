@@ -7,6 +7,10 @@ from rest_framework.exceptions import PermissionDenied
 
 from apps.restaurants.cache.redis_client import redis_client
 import json
+from apps.restaurants.rate_limiters.restaurant_create_limiter import (
+    enforce_restaurant_create_rate_limit
+)
+
 
 
 # CREATE
@@ -24,6 +28,10 @@ class RestaurantCreateView(generics.CreateAPIView):
     serializer_class = RestaurantSerializer
 
     def perform_create(self, serializer):
+        # Rate limit check (Token Bucket)
+        enforce_restaurant_create_rate_limit(self.request.user.id)
+
+        # Create restaurant
         restaurant = serializer.save(owner_id=self.request.user.id)
 
         # Write-through cache update
